@@ -1,0 +1,9 @@
+# 2학년 2반 2021041080 정승현
+# 2입력 XOR GATE
+# SWITCH 회로 입력
+# led 회로 출력
+
+NET "A" LOC = R7;  #INPUT X0
+NET "B" LOC = M7;  #INPUT X1
+
+NET "Y" LOC = C7;  # OUTPUT Y0
