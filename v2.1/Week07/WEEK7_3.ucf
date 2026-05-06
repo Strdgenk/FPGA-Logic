@@ -1,0 +1,12 @@
+# 과제 3번
+# 2019041073 손대영
+# 2021041080 정승현
+ #input--switch
+net "x(0)" loc=r7; 	#sw x0
+net "x(1)" loc=m7; 	#sw x1
+net "x(2)" loc=e10;	#sw x2
+#output--led
+net "y(0)" loc=c7; 	#led y0
+net "y(1)" loc=d5; 	#led y1 
+net "y(2)" loc=d8; 	#led y2  
+net "y(3)" loc=e7; 	#led y3 
