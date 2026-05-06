@@ -1,0 +1,47 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_unsigned.ALL; --산술연산을 위한 패키지
+USE ieee.numeric_std.ALL;--산술연산을 위한 패키지
+-- 과제 2번
+-- 2019041073 손대영
+-- 2021041080 정승현
+ENTITY WEEK7_1_TB IS
+END WEEK7_1_TB;
+ 
+ARCHITECTURE behavior OF WEEK7_1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT WEEK7_1
+    PORT(
+         X : IN  std_logic_vector(3 downto 0);
+         Y : OUT  std_logic_vector(3 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal X : std_logic_vector(3 downto 0) := (others => '0');
+
+ 	--Outputs
+   signal Y : std_logic_vector(3 downto 0);
+  
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: WEEK7_1 PORT MAP (
+          X => X,
+          Y => Y
+        );
+
+ -- Stimulus process
+ 
+stim_proc_SONY: process
+begin
+	wait for 100 ns;
+	x <= x+1;-- vector X 값 증가
+	
+	
+   end process;
+END;
