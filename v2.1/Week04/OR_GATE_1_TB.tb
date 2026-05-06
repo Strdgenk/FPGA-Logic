@@ -1,0 +1,40 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년_2반_2021041080_정승현
+-- WEEK4 2입력 OR GATE
+ 
+ENTITY OR_GATE_1_TB IS
+END OR_GATE_1_TB;
+ 
+ARCHITECTURE behavior OF OR_GATE_1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT OR_GATE4_1
+    PORT(
+         A : IN  std_logic;
+         B : IN  std_logic;
+         Y : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal A : std_logic := '0';
+   signal B : std_logic := '0';
+
+ 	--Outputs
+   signal Y : std_logic;
+   
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: OR_GATE4_1 PORT MAP (
+          A => A,
+          B => B,
+          Y => Y
+        );
+
+END;
