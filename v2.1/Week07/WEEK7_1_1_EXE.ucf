@@ -1,0 +1,9 @@
+#WEEK7_1_1
+#과제1
+#2학년 2반 2019041073 손대영, 2학년 2반 2021041080 정승현
+#INPUT 설정 ; X0,X1,X2
+NET "X0" LOC=R7;
+NET "X1" LOC=M7;
+NET "X2" LOC=E10;
+#OUTOUT 설정 ; Y0
+NET "Y0" LOC=C7;
