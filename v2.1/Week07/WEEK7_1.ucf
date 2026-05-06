@@ -1,0 +1,13 @@
+#과제 1 if ~ then ~ else문
+#ste_logic_vector 문장표현
+#학년 반 학번 이름
+#input--switch
+net "x(0)" loc=r7; 	#sw x0
+net "x(1)" loc=m7; 	#sw x1
+net "x(2)" loc=e10;	#sw x2
+net "x(3)" loc=c10; 	#sw x3
+#output--led
+net "y(0)" loc=c7; 	#led y0
+net "y(1)" loc=d5; 	#led y1 
+net "y(2)" loc=d8; 	#led y2  
+net "y(3)" loc=e7; 	#led y3
