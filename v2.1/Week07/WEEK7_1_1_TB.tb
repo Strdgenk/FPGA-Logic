@@ -1,0 +1,56 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2019041073 손대영, 2학년 2반 2021041080 정승현
+ 
+ENTITY WEEK7_1_1_TB IS
+END WEEK7_1_1_TB;
+ 
+ARCHITECTURE behavior OF WEEK7_1_1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT WEEK7_1_1
+    PORT(
+         X0 : IN  std_logic;
+         X1 : IN  std_logic;
+         X2 : IN  std_logic;
+         Y0 : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal X0 : std_logic := '0';
+   signal X1 : std_logic := '0';
+   signal X2 : std_logic := '0';
+
+ 	--Outputs
+   signal Y0 : std_logic;
+
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: WEEK7_1_1 PORT MAP (
+          X0 => X0,
+          X1 => X1,
+          X2 => X2,
+          Y0 => Y0
+        );
+ 
+
+   -- Stimulus process
+   stim_proc: process
+   begin		
+	X2<='0'; X1<='0'; X0<='0'; wait for 100ns;--0
+	X2<='0'; X1<='0'; X0<='1'; wait for 100ns;--1
+	X2<='0'; X1<='1'; X0<='0'; wait for 100ns;--2
+	X2<='0'; X1<='1'; X0<='1'; wait for 100ns;--3
+	X2<='1'; X1<='0'; X0<='0'; wait for 100ns;--4
+	X2<='1'; X1<='0'; X0<='1'; wait for 100ns;--5
+	X2<='1'; X1<='1'; X0<='0'; wait for 100ns;--6
+	X2<='1'; X1<='1'; X0<='1'; wait ; --7 실행정지
+   end process;
+
+END;
