@@ -1,0 +1,37 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- WEEK4
+-- IN_OUT
+-- 2학년_2반_2021041080_정승현
+ 
+ENTITY INVERTER4_TB IS
+END INVERTER4_TB;
+ 
+ARCHITECTURE behavior OF INVERTER4_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT INVERTER4
+    PORT(
+         x7 : IN  std_logic;
+         y7 : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal x7 : std_logic := '0';
+
+ 	--Outputs
+   signal y7 : std_logic;
+  
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: INVERTER4 PORT MAP (
+          x7 => x7,
+          y7 => y7
+        );
+
+END;
