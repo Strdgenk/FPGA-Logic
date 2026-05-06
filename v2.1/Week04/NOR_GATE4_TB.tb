@@ -1,0 +1,42 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년_2반_2021041080_정승현
+-- 3입력 NOR GATE
+ 
+ENTITY NOR_GATE4_TB IS
+END NOR_GATE4_TB;
+ 
+ARCHITECTURE behavior OF NOR_GATE4_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT NOR_GATE4
+    PORT(
+         A : IN  std_logic;
+         B : IN  std_logic;
+         C : IN  std_logic;
+         Y : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal A : std_logic := '0';
+   signal B : std_logic := '0';
+   signal C : std_logic := '0';
+
+ 	--Outputs
+   signal Y : std_logic;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: NOR_GATE4 PORT MAP (
+          A => A,
+          B => B,
+          C => C,
+          Y => Y
+        );
+
+END;
