@@ -1,0 +1,13 @@
+# WEEK6
+# 과제1 2입력 GATE 응용
+# 2학년 2반 2021041080 정승현
+
+#input 설정 ; X0, X1, X2
+
+NET "X0" LOC = R7;
+NET "X1" LOC = M7;
+NET "X2" LOC = E10;
+
+#OUTPUT 성정 ; Y0
+
+NET "Y0" LOC = C7;
