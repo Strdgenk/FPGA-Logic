@@ -1,0 +1,12 @@
+# week3
+# Y0Y7 LED ON
+# 2학년 2반 2021041080 정승현
+
+NET "Y0" LOC = C7 ; 
+NET "Y1" LOC = D5 ;
+NET "Y2" LOC = D8 ;
+NET "Y3" LOC = E7 ;
+NET "Y4" LOC = F7 ;
+NET "Y5" LOC = A12 ;
+NET "Y6" LOC = A14 ;
+NET "Y7" LOC = B12 ;
