@@ -1,0 +1,53 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 과제 1번
+-- 2019041073 손대영
+-- 2021041080 정승현
+ 
+ENTITY WEEK7_2_TB IS
+END WEEK7_2_TB;
+ 
+ARCHITECTURE behavior OF WEEK7_2_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT WEEK7_2
+    PORT(
+         X : IN  std_logic_vector(2 downto 0);
+         Y : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal X : std_logic_vector(2 downto 0) := (others => '0');
+
+ 	--Outputs
+   signal Y : std_logic;
+   
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: WEEK7_2 PORT MAP (
+          X => X,
+          Y => Y
+        );
+
+   
+   -- Stimulus process
+stim_proc_SONY: process
+begin
+	-- hold reset state for 100 ns.
+	wait for 100 ns;
+	x<="001"; wait for 100 ns;
+	x<="010"; wait for 100 ns;
+	x<="011"; wait for 100 ns;
+	x<="100"; wait for 100 ns;
+	x<="101"; wait for 100 ns;
+	x<="110"; wait for 100 ns;
+	x<="111"; wait;
+   end process;
+
+END;
