@@ -1,0 +1,18 @@
+# WEEK6
+# 2입력 응용
+# 2학년 2반 2021041080 정승현
+
+#input--switch
+net "X0" loc=r7; #sw X0
+net "X0" loc=r7;
+net "X0" loc=r7;
+
+# output--led
+net "Y0" loc=c7; # led Y0 --BUFFER
+net "Y1" loc=d5; # led Y1 --INVERTER
+net "Y2" loc=d8; # led Y2 --AND
+net "Y3" loc=e7; # led Y3 --NAND
+net "Y4" loc=f7; # led Y4 --OR
+net "Y5" loc=a12; # led Y5 --NOR
+net "Y6" loc=a14; # led Y6 --XOR
+net "Y7" loc=b12; # led Y7 --XNOR
