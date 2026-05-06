@@ -1,0 +1,7 @@
+# 2학년 2반 2021041080 정승현
+# X7 INPUT
+# Y7 OUTPUT
+# WEEK4
+
+NET "X7" LOC = M6 ; # FPGA 칩의 핀번호에 M6에 X7 스위치의 신호를 입력한다.
+NET "Y7" LOC = B12 ; # FPGA 칩의 핀번호에 B12에 Y7 스위치의 신호를 입력한다.
