@@ -1,0 +1,34 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- WEEK2
+-- Y7 LED ON
+-- 2학년 2반 2021041080 정승현
+ 
+ENTITY Y7_LED_TB IS
+END Y7_LED_TB;
+ 
+ARCHITECTURE behavior OF Y7_LED_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT Y7_LED
+    PORT(
+         y7 : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+ 	--Outputs
+   signal y7 : std_logic;
+   
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: Y7_LED PORT MAP (
+          y7 => y7
+        );
+
+
+
+END;
