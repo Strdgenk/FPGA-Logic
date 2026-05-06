@@ -1,0 +1,81 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- WEEK6
+-- 2입력 응용
+-- 2학년_2반_2021041080_정승현
+ 
+ENTITY input102_1_TB IS
+END input102_1_TB;
+ 
+ARCHITECTURE behavior OF input102_1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT input102_1
+    PORT(
+         X0 : IN  std_logic;
+         X1 : IN  std_logic;
+         X2 : IN  std_logic;
+         Y0 : OUT  std_logic;
+         Y1 : OUT  std_logic;
+         Y2 : OUT  std_logic;
+         Y3 : OUT  std_logic;
+         Y4 : OUT  std_logic;
+         Y5 : OUT  std_logic;
+         Y6 : OUT  std_logic;
+         Y7 : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal X0 : std_logic; --:= '0';
+   signal X1 : std_logic; --:= '0';
+   signal X2 : std_logic; --:= '0';
+
+ 	--Outputs
+   signal Y0 : std_logic;
+   signal Y1 : std_logic;
+   signal Y2 : std_logic;
+   signal Y3 : std_logic;
+   signal Y4 : std_logic;
+   signal Y5 : std_logic;
+   signal Y6 : std_logic;
+   signal Y7 : std_logic;
+
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: input102_1 PORT MAP (
+          X0 => X0,
+          X1 => X1,
+          X2 => X2,
+          Y0 => Y0,
+          Y1 => Y1,
+          Y2 => Y2,
+          Y3 => Y3,
+          Y4 => Y4,
+          Y5 => Y5,
+          Y6 => Y6,
+          Y7 => Y7
+        );
+ 
+
+   -- Stimulus process
+   stim_proc: process
+   begin		
+      -- hold reset state for 100 ns.
+		X2<='0'; X1<='0'; X0<='0'; wait for 100ns;--0
+	X2<='0'; X1<='0'; X0<='1'; wait for 100ns;--1
+	X2<='0'; X1<='1'; X0<='0'; wait for 100ns;--2
+	X2<='0'; X1<='1'; X0<='1'; wait for 100ns;--3
+	X2<='1'; X1<='0'; X0<='0'; wait for 100ns;--4
+	X2<='1'; X1<='0'; X0<='1'; wait for 100ns;--5
+	X2<='1'; X1<='1'; X0<='0'; wait for 100ns;--6
+	X2<='1'; X1<='1'; X0<='1'; wait ; --7 실행정지
+	
+   end process;
+
+END;
