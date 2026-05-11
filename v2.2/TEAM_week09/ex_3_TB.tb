@@ -1,0 +1,56 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+-- 2학년 2반 2021041028 김호중 
+-- 2학년 2반 2021041080 정승현
+-- JOHNSON COUNTER + RESET
+ 
+ENTITY ex_3_TB IS
+END ex_3_TB;
+ 
+ARCHITECTURE behavior OF ex_3_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT ex_3
+    PORT(
+         rst : IN  std_logic;
+         clk : IN  std_logic;
+         dq : OUT  std_logic_vector(3 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal rst : std_logic := '1';
+   signal clk : std_logic := '0';
+
+ 	--Outputs
+   signal dq : std_logic_vector(3 downto 0);
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: ex_3 PORT MAP (
+          rst => rst,
+          clk => clk,
+          dq => dq
+        );
+
+   -- Clock process definitions
+   clk_process :process
+	begin
+		clk <= not clk;
+		wait for 25 ns;
+	end process;
+ 
+
+   -- Stimulus process
+   rst_proc: process
+	begin
+		wait for 800 ns;
+		rst <= '0';
+		wait;
+	end process;
+
+END;
