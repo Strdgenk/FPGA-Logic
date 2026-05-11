@@ -1,0 +1,14 @@
+## 과제 1 동기식 RS FLIP FLOP
+## 2학년 2반 2021041080 정승현, 2학년 2반 2021041064 이정일
+
+#INPUT
+
+net "CLK" loc=J12; #ev3
+net "RST" loc=P6; #X4
+
+net "R" loc=R7; #X0
+net "S" loc=E10; #X2
+
+#OUTPUT
+
+net "Q" loc=C7; #Y0
