@@ -1,0 +1,62 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- week10 과제3(실습1 로드기능 응용) TB
+-- 2학년 2반 2021041028 김호중, 2021041080 정승현
+ 
+ENTITY week10_practice1_TB IS
+END week10_practice1_TB;
+ 
+ARCHITECTURE behavior OF week10_practice1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT week10_practice1
+    PORT(
+         RST : IN  std_logic;
+         CLK : IN  std_logic;
+			LOAD : IN  std_logic;
+         Q : OUT  std_logic_vector(3 downto 0);
+         SEG : OUT  std_logic_vector(7 downto 0);
+			PWM : OUT  std_logic_vector(2 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal RST : std_logic := '0';
+   signal CLK : std_logic := '0';
+	signal LOAD : std_logic := '1';
+
+ 	--Outputs
+   signal Q : std_logic_vector(3 downto 0);
+   signal SEG : std_logic_vector(7 downto 0);
+	signal PWM : std_logic_vector(2 downto 0);
+  
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: week10_practice1 PORT MAP (
+          RST => RST,
+          CLK => CLK,
+			 LOAD => LOAD,
+          Q => Q,
+          SEG => SEG,
+			 PWM => PWM
+        );
+
+   -- Clock process definitions
+   CLK_process :process
+   begin
+		CLK <= not clk; wait for 25 ns;
+   end process;
+ 
+
+   -- Stimulus process
+   RST_proc: process
+   begin		
+      wait for 110 ns;	
+		rst <= not rst; WAIT;
+   end process;
+
+END;
