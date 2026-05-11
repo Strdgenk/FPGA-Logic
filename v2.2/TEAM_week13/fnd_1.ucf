@@ -1,0 +1,18 @@
+# 시스템 클록
+Net CLK LOC = T8;
+
+# 7세그먼트 디지트
+Net "Q<0>" LOC = A13;
+Net "Q<1>" LOC = B14;
+Net "Q<2>" LOC = C13;
+Net "Q<3>" LOC = D11;
+
+# 7세그먼트 세그먼트
+Net "FND<0>" LOC = A8;
+Net "FND<1>" LOC = B8;
+Net "FND<2>" LOC = C6;
+Net "FND<3>" LOC = C8;
+Net "FND<4>" LOC = D6;
+Net "FND<5>" LOC = E6;
+Net "FND<6>" LOC = A9;
+Net "FND<7>" LOC = A11;
