@@ -1,0 +1,132 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+-- 2학년 2반 2021041028 김호중, 2021041080 정승현
+-- 과제 1
+
+ENTITY week14_F_TB IS
+END week14_F_TB;
+
+ARCHITECTURE behavior OF week14_F_TB IS 
+
+    -- Component Declaration for the Unit Under Test (UUT)
+    COMPONENT week14_F
+    PORT(
+         clk : IN  std_logic;
+         row : IN  std_logic_vector(3 downto 0);
+         col : INOUT  std_logic_vector(3 downto 0);
+         fnd : OUT  std_logic_vector(7 downto 0);
+         fnd_digit : OUT  std_logic_vector(3 downto 0);
+         beep : OUT  std_logic;
+         dir : INOUT  std_logic;
+         motor_en : OUT  std_logic;
+         pwm_out : OUT  std_logic_vector(2 downto 0);
+         d : IN  std_logic_vector(3 downto 0);
+         addr : IN  std_logic_vector(2 downto 0);
+         we : IN  std_logic;
+         q : OUT  std_logic_vector(3 downto 0);
+         led : OUT  std_logic_vector(3 downto 0)
+        );
+    END COMPONENT;
+
+    -- Inputs
+    signal clk : std_logic := '0';
+    signal row : std_logic_vector(3 downto 0) := "1111";  -- 초기 키 값 없음
+    signal d : std_logic_vector(3 downto 0) := (others => '0');
+    signal addr : std_logic_vector(2 downto 0) := (others => '0');
+    signal we : std_logic := '0';
+
+    -- BiDirs
+    signal col : std_logic_vector(3 downto 0) := "1111";  -- 기본 비활성화 상태
+    signal dir : std_logic;
+
+    -- Outputs
+    signal fnd : std_logic_vector(7 downto 0);
+    signal fnd_digit : std_logic_vector(3 downto 0);
+    signal beep : std_logic;
+    signal motor_en : std_logic;
+    signal pwm_out : std_logic_vector(2 downto 0);
+    signal q : std_logic_vector(3 downto 0);
+    signal led : std_logic_vector(3 downto 0);
+
+    -- Clock period definitions
+    constant clk_period : time := 10 ns;
+
+BEGIN
+
+    -- Instantiate the Unit Under Test (UUT)
+    uut: week14_F PORT MAP (
+          clk => clk,
+          row => row,
+          col => col,
+          fnd => fnd,
+          fnd_digit => fnd_digit,
+          beep => beep,
+          dir => dir,
+          motor_en => motor_en,
+          pwm_out => pwm_out,
+          d => d,
+          addr => addr,
+          we => we,
+          q => q,
+          led => led
+        );
+
+    -- Clock process definitions
+    clk_process :process
+    begin
+        clk <= '0';
+        wait for clk_period/2;
+        clk <= '1';
+        wait for clk_period/2;
+    end process;
+ 
+
+    -- Stimulus process
+    stim_proc: process
+    begin		
+        -- 초기 상태 대기
+        wait for 100 ns;
+
+        -- 키 매트릭스 테스트 (4번 키 입력)
+        row <= "1110"; -- ROW 0에서 첫 번째 키 입력 ("0")
+        wait for clk_period*10;
+        row <= "1111"; -- 키 릴리스
+        wait for clk_period*10;
+
+        -- 4번 키에 대응하는 BEEP 출력 확인
+        assert beep = '0' report "BEEP 오류!" severity warning;
+        wait for clk_period*10;
+
+        -- 데이터 저장 테스트
+        we <= '0';        -- Write Enable 활성화
+        addr <= "000";    -- 주소 설정
+        d <= "0101";      -- 데이터 입력
+        wait for clk_period*10;
+
+        we <= '1';        -- Write Enable 비활성화
+        wait for clk_period*10;
+
+        -- 저장된 데이터 출력 확인
+        assert q = "0101" report "Q 출력 오류!" severity warning;
+
+        -- LED 테스트 (6번 키 입력으로 순차 점등)
+        row <= "1011";  -- ROW 2, COL 1 (6번 키)
+        wait for clk_period*10;
+
+        -- PWM 테스트 (5번 키 입력 후 색상 전환)
+        row <= "1011";  -- ROW 2, COL 0 (5번 키)
+        wait for clk_period*10;
+        assert pwm_out = "110" report "PWM 출력 오류!" severity warning;
+
+        -- 모터 테스트
+        row <= "1101"; -- ROW 1, COL 0 (Forward Motor Control)
+        wait for clk_period*10;
+
+        assert motor_en = '1' report "모터 활성화 오류!" severity warning;
+
+        -- 테스트 종료
+        wait;
+    end process;
+
+END;
