@@ -1,0 +1,66 @@
+NET "clk" LOC = "t8";    # FPGA 보드에서 클럭 핀 위치
+
+# address 입력 스위치
+net "addr(2)" loc = j12; # ev3
+net "addr(1)" loc = j14; # ev2
+net "addr(0)" loc = k11; # ev1
+net "clk" loc = T8; # clk
+net "we" loc = k14; # ev0
+
+# address 입력 슬라이드 스위치
+net "D(3)" loc = m6; # x7
+net "D(2)" loc = n5; # x6
+net "D(1)" loc = p4; # x5
+net "D(0)" loc = p6; # x4
+
+
+# address 출력 LED
+net "q(3)" loc = b12; # y7
+net "q(2)" loc = a14; # y6
+net "q(1)" loc = a12; # y5
+net "q(0)" loc = f7; # y4
+
+
+# 16- Key Matrix ROW Pins (Input)
+NET "row[0]" LOC = "l16"; # ROW0 핀 연결
+NET "row[1]" LOC = "l13"; # ROW1 핀 연결
+NET "row[2]" LOC = "k16"; # ROW2 핀 연결
+NET "row[3]" LOC = "h16"; # ROW3 핀 연결
+
+# Key Matrix COLUMN Pins (Output)
+NET "col[0]" LOC = "p16"; # COLUMN0 핀 연결
+NET "col[1]" LOC = "n16"; # COLUMN1 핀 연결
+NET "col[2]" LOC = "m16"; # COLUMN2 핀 연결
+NET "col[3]" LOC = "r14"; # COLUMN3 핀 연결
+
+# FND 세그먼트 (Output)
+NET "fnd[0]" LOC = "a8"; # a segment
+NET "fnd[1]" LOC = "b8"; # b segment
+NET "fnd[2]" LOC = "c6"; # c segment
+NET "fnd[3]" LOC = "c8"; # d segment
+NET "fnd[4]" LOC = "d6"; # e segment
+NET "fnd[5]" LOC = "e6"; # f segment
+NET "fnd[6]" LOC = "a9"; # g segment
+NET "fnd[7]" LOC = "a11"; # p segment
+
+# beep, 모터 방향, 모터 활성화
+net "beep" loc = "e11";
+net "dir" loc= "p15";
+net "motor_en" loc="r12";
+
+# PWM 출력
+net "pwm_out(2)" loc=d12;
+net "pwm_out(1)" loc=d9;
+net "pwm_out(0)" loc=c11;
+
+# FND 디지털 자리 핀
+NET "fnd_digit[0]" LOC = "a13";  # FND1 Common Cathode
+NET "fnd_digit[1]" LOC = "b14";  # FND2 Common Cathode
+NET "fnd_digit[2]" LOC = "c13";  # FND3 Common Cathode
+NET "fnd_digit[3]" LOC = "d11";  # FND4 Common Cathode
+
+# LED 순차/역순 점등 출력
+NET "LED(0)" LOC = C7; # y0
+NET "LED(1)" LOC = D5; # y1
+NET "LED(2)" LOC = D8; # y2
+NET "LED(3)" LOC = E7; # y3
