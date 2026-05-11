@@ -1,0 +1,14 @@
+# 2학년 2반 2021041080 정승현
+# WEEK9 PROJECT 선택적
+
+#input 
+NET "X(0)"LOC=R7;
+NET "X(1)"LOC=M7;
+
+#OUTPUT
+NET "Y(0)"LOC=C7; 
+NET "Y(1)"LOC=D5; 
+NET "Y(2)"LOC=D8; 
+NET "Y(3)"LOC=E7; 
+NET "Y(4)"LOC=F7;
+NET "Y(5)"LOC=A12;
