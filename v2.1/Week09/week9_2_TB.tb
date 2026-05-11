@@ -1,0 +1,50 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_unsigned.ALL; --산술연산을 위한 패키지
+USE ieee.numeric_std.ALL;--산술연산을 위한 패키지
+ 
+-- 2학년_2반_2021041080_정승현
+-- WEEK9 실습2 선택적 병행처리문
+-- vector동작
+ 
+ENTITY week9_2_TB IS
+END week9_2_TB;
+ 
+ARCHITECTURE behavior OF week9_2_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT week9_2
+    PORT(
+         X : IN  std_logic_vector(2 downto 0);
+         Y : OUT  std_logic_vector(3 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal X : std_logic_vector(2 downto 0) := (others => '0');
+
+ 	--Outputs
+   signal Y : std_logic_vector(3 downto 0);
+
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: week9_2 PORT MAP (
+          X => X,
+          Y => Y
+        );
+
+ 
+
+   -- Stimulus process
+   stim_proc: process
+   begin		
+      wait for 100 ns;	
+		X <= X+1;
+
+   end process;
+
+END;
