@@ -1,0 +1,84 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2021041080 정승현 2학년 2반 2021041064 이정일
+-- COUNTER LOAD
+-- Synchronous_RESET
+ 
+ENTITY PJC_1_TB IS
+END PJC_1_TB;
+ 
+ARCHITECTURE behavior OF PJC_1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT PJC_1
+    PORT(
+         RESET : IN  std_logic;
+         CLK : IN  std_logic;
+         Y : OUT  std_logic_vector(3 downto 0);
+         BEEP : OUT  std_logic;
+         EV0 : IN  std_logic;
+         EV1 : IN  std_logic;
+         EV2 : IN  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal RESET : std_logic := '0';
+   signal CLK : std_logic := '0';
+   signal EV0 : std_logic := '1';
+   signal EV1 : std_logic := '1';
+   signal EV2 : std_logic := '1';
+
+ 	--Outputs
+   signal Y : std_logic_vector(3 downto 0);
+   signal BEEP : std_logic;
+
+   -- Clock period definitions
+   constant CLK_period : time := 10 ns;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: PJC_1 PORT MAP (
+          RESET => RESET,
+          CLK => CLK,
+          Y => Y,
+          BEEP => BEEP,
+          EV0 => EV0,
+          EV1 => EV1,
+          EV2 => EV2
+        );
+
+   -- Clock process definitions
+   CLK_process :process
+   begin
+		CLK <= not CLK; wait for 25 ns;
+   end process;
+	
+	reset_process :process
+	begin
+	wait for 200 ns;
+		reset <= not reset;
+	end process;
+	
+	ev0_process :process
+	begin
+	wait for 300 ns;
+		ev0 <= '0';
+	end process;
+	
+	ev1_process :process
+	begin
+	wait for 300 ns;
+		ev1 <= '0';
+	end process;
+	
+	ev2_process :process
+	begin
+	wait for 300 ns;
+		ev2 <= '0';
+	end process;
+END;
