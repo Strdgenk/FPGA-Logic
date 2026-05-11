@@ -1,0 +1,54 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2021041080 정승현
+-- COUNTER
+-- Synchronous_RESET
+ 
+ENTITY EX_1_TB IS
+END EX_1_TB;
+ 
+ARCHITECTURE behavior OF EX_1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT EX_1
+    PORT(
+         RESET : IN  std_logic;
+         CLK : IN  std_logic;
+         Y : OUT  std_logic_vector(3 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal RESET : std_logic := '0';
+   signal CLK : std_logic := '0';
+
+ 	--Outputs
+   signal Y : std_logic_vector(3 downto 0);
+
+   -- Clock period definitions
+   constant CLK_period : time := 10 ns;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: EX_1 PORT MAP (
+          RESET => RESET,
+          CLK => CLK,
+          Y => Y
+        );
+
+   -- Clock process definitions
+   CLK_process :process
+   begin
+		CLK <= not CLK; wait for 25 ns;
+   end process;
+	
+	RESET_process :process
+	begin
+	wait for 300 ns;
+		reset <= not reset;
+	end process;
+END;
