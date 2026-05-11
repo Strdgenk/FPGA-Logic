@@ -1,0 +1,64 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+-- 2학년 2반 2021041064 이정일 2021041080정승현
+
+ 
+ENTITY week6_4_1_tb IS
+END week6_4_1_tb;
+ 
+ARCHITECTURE behavior OF week6_4_1_tb IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT week6_4_1
+    PORT(
+         reset : IN  std_logic;
+         clk : IN  std_logic;
+         y : OUT  std_logic_vector(3 downto 0);
+         beep : OUT  std_logic;
+         load : IN  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal reset : std_logic := '0';
+   signal clk : std_logic := '0';
+   signal load : std_logic := '1';
+
+ 	--Outputs
+   signal y : std_logic_vector(3 downto 0);
+   signal beep : std_logic:= '1';
+
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: week6_4_1 PORT MAP (
+          reset => reset,
+          clk => clk,
+          y => y,
+          beep => beep,
+          load => load
+        );
+
+   -- Clock process definitions
+   clk_process :process
+   begin
+		clk <= not clk; wait for 25ns;
+   end process;
+	
+	reset_process :process
+	begin
+	wait for 200 ns;
+		reset <= not reset;
+	end process;
+ 
+   load_proc: process
+   begin
+	wait for 300 ns;
+		load <= '0';
+  
+   end process;
+
+END;
