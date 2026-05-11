@@ -1,0 +1,28 @@
+# synchronous reset counter16
+# 2학년 2반 2021041028 김호중, 2021041080 정승현
+
+# INPUT
+NET "CLK" LOC=C9;
+NET "RST" LOC=J12;
+NET "load" LOC = k14;
+
+# OUTPUT - Q
+NET "Q(0)" LOC=A13;
+NET "Q(1)" LOC=B14;
+NET "Q(2)" LOC=C13;
+NET "Q(3)" LOC=D11;
+
+NET "BEEP" LOC=e11;
+NET "PWM(0)" LOC=D12;
+NET "PWM(1)" LOC=D9;
+NET "PWM(2)" LOC=C11;
+
+# OUTPUT - 7-SEGMENT
+NET "SEG(0)" LOC=A8;
+NET "SEG(1)" LOC=B8;
+NET "SEG(2)" LOC=C6;
+NET "SEG(3)" LOC=C8;
+NET "SEG(4)" LOC=D6;
+NET "SEG(5)" LOC=E6;
+NET "SEG(6)" LOC=A9;
+NET "SEG(7)" LOC=A11;
