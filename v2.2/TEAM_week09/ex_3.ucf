@@ -1,0 +1,13 @@
+#2학년 2반 2021041028 김호중
+#2학년 2반 2021041080 정승현
+#JOHNSON COUNTER + RESET
+
+#INPUT
+net "clk" loc = c9;
+net "rst" loc = j12;
+
+#OUTPUT
+net "dq(0)" loc = c7;
+net "dq(1)" loc = d5;
+net "dq(2)" loc = d8;
+net "dq(3)" loc = e7;
