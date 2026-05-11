@@ -1,0 +1,69 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 과제 1 비동기식 RS FLIP FLOP
+-- 2학년 2반 2021041080 정승현, 2학년 2반 2021041064 이정일
+ 
+ENTITY PJA_2_TB IS
+END PJA_2_TB;
+ 
+ARCHITECTURE behavior OF PJA_2_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT PJA_2
+    PORT(
+         CLK : IN  std_logic;
+         RST : IN  std_logic;
+         R : IN  std_logic;
+         S : IN  std_logic;
+         Q : BUFFER  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal CLK : std_logic := '0';
+   signal RST : std_logic := '0';
+   signal R : std_logic := '0';
+   signal S : std_logic := '0';
+
+ 	--Outputs
+   signal Q : std_logic;
+
+   -- Clock period definitions
+   constant CLK_period : time := 10 ns;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: PJA_2 PORT MAP (
+          CLK => CLK,
+          RST => RST,
+          R => R,
+          S => S,
+          Q => Q
+        );
+
+   -- Clock process definitions
+  CLK_process :process
+		begin
+		CLK <= NOT CLK; wait for 50 ns;
+		end process;
+		
+	RS_RST : process
+		begin
+		RST <= NOT RST; wait for 150ns;
+		end process;
+	
+	RS_R : process
+		begin
+		R <= NOT R; wait for 150 ns;
+		end process;
+		
+	RS_S : process
+		begin
+		S <= NOT S; wait for 50 ns;
+		end process;
+	
+END;
