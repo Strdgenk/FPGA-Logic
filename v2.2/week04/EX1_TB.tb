@@ -1,0 +1,73 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2021041080 정승현
+-- RS, D FIP-Flop
+ 
+ENTITY EX1_TB IS
+END EX1_TB;
+ 
+ARCHITECTURE behavior OF EX1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT EX1
+    PORT(
+         S : IN  std_logic;
+         R : IN  std_logic;
+         D : IN  std_logic;
+         CLK : IN  std_logic;
+         D_Q : OUT  std_logic;
+         D_QVAR : OUT  std_logic;
+         RS_Q : BUFFER  std_logic;
+         RS_QVAR : BUFFER  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal S : std_logic := '1';
+   signal R : std_logic := '0';
+   signal D : std_logic := '0';
+   signal CLK : std_logic := '0';
+
+ 	--Outputs
+   signal D_Q : std_logic;
+   signal D_QVAR : std_logic;
+   signal RS_Q : std_logic;
+   signal RS_QVAR : std_logic;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: EX1 PORT MAP (
+          S => S,
+          R => R,
+          D => D,
+          CLK => CLK,
+          D_Q => D_Q,
+          D_QVAR => D_QVAR,
+          RS_Q => RS_Q,
+          RS_QVAR => RS_QVAR
+        );
+ 
+
+   -- Stimulus process
+   CLK_process: process
+   begin		
+	clk <= not clk; WAIT FOR 50 ns;
+	end process;
+	INPUT : PROCESS
+	 begin
+	 wait for 60 ns;
+	 
+	 D <='1'; S <= '0'; R <= '0'; WAIT FOR 160 NS;
+	 D <='1'; S <= '1'; R <= '0'; WAIT FOR 160 NS;
+	 D <='1'; S <= '1'; R <= '1'; WAIT FOR 160 NS;
+	 D <='0'; S <= '0'; R <= '1'; WAIT FOR 160 NS;
+	 D <='0'; S <= '1'; R <= '0'; WAIT FOR 160 NS;
+	 D <='1'; S <= '0'; R <= '0'; WAIT FOR 160 NS;
+	 D <='1'; S <= '1'; R <= '1'; WAIT FOR 160 NS;
+   end process;
+
+END;
