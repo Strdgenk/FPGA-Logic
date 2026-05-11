@@ -1,0 +1,13 @@
+#2학년 2반 2021041080 정승현
+#COUNTER
+#Synchronous_RESET
+
+#INPUT
+net "CLK" LOC=C9;
+net "RESET" LOC=J12;
+
+#OUTPUT
+net "Y(0)" LOC=C7;
+net "Y(1)" LOC=D5;
+net "Y(2)" LOC=D8;
+net "Y(3)" LOC=E7;
