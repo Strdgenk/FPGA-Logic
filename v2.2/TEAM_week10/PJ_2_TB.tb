@@ -1,0 +1,68 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2021041028 김호중, 2021041080 정승현
+-- Synchronous reset, counter8
+-- 응용
+-- 과제4
+ 
+ENTITY PJ_2_TB IS
+END PJ_2_TB;
+ 
+ARCHITECTURE behavior OF PJ_2_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT PJ_2
+    PORT(
+         rst : IN  std_logic;
+         clk : IN  std_logic;
+			load : IN  std_logic;
+         beep : OUT  std_logic;
+			pwm : OUT std_logic_vector(2 downto 0);
+         q : OUT  std_logic_vector(3 downto 0);
+         seg : OUT  std_logic_vector(7 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal rst : std_logic := '0';
+   signal clk : std_logic := '0';
+	signal load : std_logic := '0';
+
+ 	--Outputs
+   signal beep : std_logic;
+   signal q : std_logic_vector(3 downto 0);
+   signal seg : std_logic_vector(7 downto 0);
+	signal pwm : std_logic_vector(2 downto 0);
+
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: PJ_2 PORT MAP (
+          rst => rst,
+          clk => clk,
+			 load => load,
+			 pwm => pwm,
+          beep => beep,
+          q => q,
+          seg => seg
+        );
+
+   -- Clock process definitions
+   clk_process :process
+   begin
+		clk <= not clk; wait for 25 ns;
+	end process;
+ 
+
+   -- Stimulus process
+   stim_proc: process
+   begin		
+     wait for 110 ns;
+	  rst <= not rst; wait;
+   end process;
+
+END;
