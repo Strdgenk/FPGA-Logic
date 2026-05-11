@@ -1,0 +1,67 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2021041080 정승현
+-- 8BIT SHIFT REGISTER
+-- 과제 2
+ 
+ENTITY PJ_4_TB IS
+END PJ_4_TB;
+ 
+ARCHITECTURE behavior OF PJ_4_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT PJ_4
+    PORT(
+         clk : IN  std_logic;
+         reset : IN  std_logic;
+         si : IN  std_logic;
+         q : OUT  std_logic_vector(7 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal clk : std_logic := '0';
+   signal reset : std_logic := '0';
+   signal si : std_logic := '0';
+
+ 	--Outputs
+   signal q : std_logic_vector(7 downto 0);
+
+   -- Clock period definitions
+   constant clk_period : time := 20 ns;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: PJ_4 PORT MAP (
+          clk => clk,
+          reset => reset,
+          si => si,
+          q => q
+        );
+
+   -- Clock process definitions
+   clk_process :process
+   begin
+		clk <= '0';
+		wait for clk_period/2;
+		clk <= '1';
+		wait for clk_period/2;
+   end process;
+ 
+
+   -- Stimulus process
+   rst: process begin
+		wait for 40 ns;
+		reset <= '1'; wait;
+		end process;
+		
+	date_in: process begin
+		wait for 120 ns;
+		SI <= '1'; wait for 100 ns;
+		SI <= '1'; wait;
+		end process;
+END;
