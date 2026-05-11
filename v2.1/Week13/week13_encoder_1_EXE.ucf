@@ -1,0 +1,39 @@
+# week13 ENCODER 응용
+# ENCODER8X3_FND_FND
+# 2학년 2반 2021041080 정승현
+
+#input 설정; X
+NET "X(0)"LOC= R7; 
+NET "X(1)"LOC= M7; 
+NET "X(2)"LOC= E10; 
+NET "X(3)"LOC= C10; 
+NET "X(4)"LOC= P6;  
+NET "X(5)"LOC= P4; 
+NET "X(6)"LOC= N5; 
+NET "X(7)"LOC= M6; 
+
+
+NET "EV(0)"LOC= k14; #EV 
+NET "EV(1)"LOC= k11; #EV1
+NET "EV(2)"LOC= j14; #EV2
+NET "EV(3)"LOC= j12;	#EV3
+
+#output 설정
+
+NET "Y(0)"LOC = C7; 
+NET "Y(1)"LOC = D5; 
+NET "Y(2)"LOC = D8; 
+
+NET "Q(0)"LOC = A13; #TR0
+NET "Q(1)"LOC = B14; #TR1
+NET "Q(2)"LOC = C13; #TR2
+NET "Q(3)"LOC = D11; #TR3 
+
+NET "FND(0)"LOC = A11; #P
+NET "FND(1)"LOC = A9; #G
+NET "FND(2)"LOC = E6; #F
+NET "FND(3)"LOC = D6; #E
+NET "FND(4)"LOC = C8; #D
+NET "FND(5)"LOC = C6; #C
+NET "FND(6)"LOC = B8; #B
+NET "FND(7)"LOC = A8; #A
