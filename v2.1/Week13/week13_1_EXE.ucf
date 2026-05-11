@@ -1,0 +1,29 @@
+# week13 실습 1
+# DECODER8X3_FND
+# 2학년 2반 2021041080 정승현
+
+#input 설정; X
+NET "X0(0)"LOC= R7; 
+NET "X0(1)"LOC= M7;
+NET "X0(2)"LOC= E10;
+NET "X0(3)"LOC= C10;
+
+NET "X1(4)"LOC= P6; 
+NET "X1(5)"LOC= P4;
+NET "X1(6)"LOC= N5;
+NET "X1(7)"LOC= M6;
+
+#OUTPUT 설정 ; Q0, FND
+NET "Q(0)"LOC = A13; #TR0
+NET "Q(1)"LOC = B14; #TR1
+NET "Q(2)"LOC = C13; #TR2
+NET "Q(3)"LOC = D11; #TR3
+
+NET "FND(0)"LOC = A11; #P 
+NET "FND(1)"LOC = A9; #G
+NET "FND(2)"LOC = E6; #F
+NET "FND(3)"LOC = D6; #E
+NET "FND(4)"LOC = C8; #D
+NET "FND(5)"LOC = C6; #C
+NET "FND(6)"LOC = B8; #B
+NET "FND(7)"LOC = A8; #A
