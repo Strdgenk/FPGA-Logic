@@ -1,0 +1,13 @@
+# 2학년 2반 2021041080 정승현
+#4BIT 멀티플렉서_순차처리문 IF_ELSLF
+
+# 데이터 입력 핀
+NET "X0" LOC = R7;
+NET "X1" LOC = M7;
+NET "X2" LOC = E10;
+NET "X3" LOC = C10;
+# 선택선 입력 핀
+NET "X4" LOC = P6;
+NET "X5" LOC = P4;
+# 출력 핀
+NET "Y0" LOC = C7;
