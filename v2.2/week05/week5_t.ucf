@@ -1,0 +1,9 @@
+##2학년 2반 2021041064 이정일, 2학년 2021041080 정승현
+##week5 t 동기식 플립플롭
+
+NET "CLK" LOC=j12;
+
+NET "t" LOC=P6;
+
+NET "t_Q" LOC=F7;
+NET "t_QVAR" LOC=A14;
