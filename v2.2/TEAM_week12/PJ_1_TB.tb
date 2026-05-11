@@ -1,0 +1,82 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2021041080 정승현
+-- 8x8 레지스터 설계
+-- 과제1
+ 
+ENTITY PJ_1_TB IS
+END PJ_1_TB;
+ 
+ARCHITECTURE behavior OF PJ_1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT PJ_1
+    PORT(
+         d : IN  std_logic_vector(7 downto 0);
+         addr : IN  std_logic_vector(2 downto 0);
+         we : IN  std_logic;
+         clk : IN  std_logic;
+         q : OUT  std_logic_vector(7 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal d : std_logic_vector(7 downto 0) := (others => '0');
+   signal addr : std_logic_vector(2 downto 0) := (others => '0');
+   signal we : std_logic := '0';
+   signal clk : std_logic := '0';
+
+ 	--Outputs
+   signal q : std_logic_vector(7 downto 0);
+
+   -- Clock period definitions
+   constant clk_period : time := 10 ns;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: PJ_1 PORT MAP (
+          d => d,
+          addr => addr,
+          we => we,
+          clk => clk,
+          q => q
+        );
+
+   -- Clock process definitions
+   clk_process :process
+   begin
+		clk <= '0';
+		wait for clk_period/2;
+		clk <= '1';
+		wait for clk_period/2;
+   end process;
+ 
+
+   -- Stimulus process
+   reg : process
+		begin
+	we <= '0'; d <= "11111110"; addr <= "000"; wait for 20 ns;
+	we <= '0'; d <= "11111101"; addr <= "001"; wait for 20 ns;
+	we <= '0'; d <= "11111011"; addr <= "010"; wait for 20 ns;
+	we <= '0'; d <= "11110111"; addr <= "011"; wait for 20 ns;
+	we <= '0'; d <= "11101111"; addr <= "100"; wait for 20 ns;
+	we <= '0'; d <= "11011111"; addr <= "101"; wait for 20 ns;
+	we <= '0'; d <= "10111111"; addr <= "110"; wait for 20 ns;
+	we <= '0'; d <= "01111111"; addr <= "111"; wait for 20 ns;
+	
+	wait for 35 ns;
+	
+	we <= '1'; d <= "00000000"; addr <= "000"; wait for 22 ns;
+	we <= '1'; d <= "00000000"; addr <= "001"; wait for 20 ns;
+	we <= '1'; d <= "00000000"; addr <= "010"; wait for 23 ns;
+	we <= '1'; d <= "00000000"; addr <= "011"; wait for 20 ns;
+	we <= '1'; d <= "00000000"; addr <= "100"; wait for 22 ns;
+	we <= '1'; d <= "00000000"; addr <= "101"; wait for 20 ns;
+	we <= '1'; d <= "00000000"; addr <= "110"; wait for 23 ns;
+	we <= '1'; d <= "00000000"; addr <= "111"; wait for 20 ns;
+end process;
+END;
