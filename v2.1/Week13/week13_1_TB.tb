@@ -1,0 +1,49 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY week13_1_TB IS
+END week13_1_TB;
+ 
+ARCHITECTURE behavior OF week13_1_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT week13_1
+    PORT(
+         X0 : IN  std_logic_vector(3 downto 0);
+         X1 : IN  std_logic_vector(7 downto 4);
+         FND : OUT  std_logic_vector(7 downto 0);
+         Q : OUT  std_logic_vector(3 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal X0 : std_logic_vector(3 downto 0) := (others => '0');
+   signal X1 : std_logic_vector(7 downto 4) := (others => '0');
+
+ 	--Outputs
+   signal FND : std_logic_vector(7 downto 0);
+   signal Q : std_logic_vector(3 downto 0);
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: week13_1 PORT MAP (
+          X0 => X0,
+          X1 => X1,
+          FND => FND,
+          Q => Q
+        );
+ 
+
+   -- Stimulus process
+   stim_proc: process
+   begin		
+	wait for 100 ns ;
+	X0 <= X0+1;
+   end process;
+
+END;
