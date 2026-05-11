@@ -1,0 +1,59 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2021041028 김호중, 2021041080 정승현
+-- 과제 1
+ 
+ENTITY PJ_3_TB IS
+END PJ_3_TB;
+ 
+ARCHITECTURE behavior OF PJ_3_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT PJ_3
+    PORT(
+         rst : IN  std_logic;
+         clk : IN  std_logic;
+         beep : OUT  std_logic;
+         q : OUT  std_logic_vector(3 downto 0);
+         seg : OUT  std_logic_vector(7 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal rst : std_logic := '0';
+   signal clk : std_logic := '0';
+
+ 	--Outputs
+   signal beep : std_logic;
+   signal q : std_logic_vector(3 downto 0);
+   signal seg : std_logic_vector(7 downto 0);
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: PJ_3 PORT MAP (
+          rst => rst,
+          clk => clk,
+          beep => beep,
+          q => q,
+          seg => seg
+        );
+
+   -- Clock process definitions
+   clk_process :process
+   begin
+		clk <= not clk; wait for 25 ns;
+	end process;
+ 
+
+   -- Stimulus process
+   stim_proc: process
+   begin		
+     wait for 110 ns;
+	  rst <= not rst; wait;
+   end process;
+
+END;
