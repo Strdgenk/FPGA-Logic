@@ -1,0 +1,44 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY wt11_4_TB IS
+END wt11_4_TB;
+ 
+ARCHITECTURE behavior OF wt11_4_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT wt11_4
+    PORT(
+         X : IN  std_logic_vector(3 downto 0);
+         O : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal X : std_logic_vector(3 downto 0) := (others => '0');
+
+ 	--Outputs
+   signal O : std_logic;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: wt11_4 PORT MAP (
+          X => X,
+          O => O
+        );
+		  
+		  
+stim_process: process
+	begin
+	wait for 50 ns ;
+	X <= X+1;
+	
+end process;
+
+
+END;
