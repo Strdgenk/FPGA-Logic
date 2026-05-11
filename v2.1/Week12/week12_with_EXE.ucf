@@ -1,0 +1,11 @@
+#2학년 2반 7팀
+#week12 with~select문
+
+#INPUT
+net "x(0)" loc=r7;
+net "x(1)" loc=m7;
+net "x(2)" loc=e10;
+
+#output
+net "sdo" loc=c7;
+net "cbo" loc=d5;
