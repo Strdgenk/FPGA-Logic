@@ -1,0 +1,59 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+--2학년 2반 2021041064 이정일, 2학년 2021041080 정승현
+--week5 jk 비동기 플립플롭 
+
+ENTITY week5_jk_a_tb IS
+END week5_jk_a_tb;
+ 
+ARCHITECTURE behavior OF week5_jk_a_tb IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT week5_jk_a
+    PORT(
+         jk : IN  std_logic_vector(1 downto 0);
+         rst : IN  std_logic;
+         jk_q : BUFFER	std_logic;
+         clk : IN  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal jk : std_logic_vector(1 downto 0) := "10";
+   signal rst : std_logic := '0';
+   signal clk : std_logic := '0';
+
+ 	--Outputs
+   signal jk_q : std_logic;
+
+   -- Clock period definitions
+   constant clk_period : time := 10 ns;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: week5_jk_a PORT MAP (
+          jk => jk,
+          rst => rst,
+          jk_q => jk_q,
+          clk => clk
+        );
+ 
+		CLOCK : PROCESS 
+		BEGIN
+			clk <= not clk; wait for 50 ns;
+			END PROCESS;
+			
+		RESET: PROCESS 
+			BEGIN
+			wait for 30 ns;
+			rst <= '0'; wait for 240 ns;
+			rst <= '1'; wait for 20 ns;
+			END PROCESS;
+			jk_ff : PROCESS BEGIN
+				jk <= not jk; wait for 300 ns;
+				END PROCESS;
+			END;
