@@ -1,0 +1,15 @@
+##2학년 2반 2021041064 이정일 2021041080 정승현
+
+
+#input
+net "clk" loc=c9;
+net "reset" loc=j12;
+net "load" loc=j14;
+
+#output
+net "y(0)" loc=d12;
+net "y(1)" loc=d9;
+net "y(2)" loc=d8;
+net "y(3)" loc=c11;
+
+net "beep" loc=e11;
