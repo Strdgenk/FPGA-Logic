@@ -1,0 +1,63 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- 2학년 2반 2021041028 김호중
+-- 2학년 2반 2021041080 정승현
+-- RING COUNTER 응용
+ 
+ENTITY ex_4_TB IS
+END ex_4_TB;
+ 
+ARCHITECTURE behavior OF ex_4_TB IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT ex_4
+    PORT(
+         rst : IN  std_logic;
+         clk : IN  std_logic;
+         load : IN  std_logic;
+         beep : OUT  std_logic;
+         dq : OUT  std_logic_vector(3 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal rst : std_logic := '1';
+   signal clk : std_logic := '0';
+   signal load : std_logic := '1';
+
+ 	--Outputs
+   signal beep : std_logic;
+   signal dq : std_logic_vector(3 downto 0);
+
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: ex_4 PORT MAP (
+          rst => rst,
+          clk => clk,
+          load => load,
+          beep => beep,
+          dq => dq
+        );
+
+   -- Clock process definitions
+   clk_process :process
+	begin
+		clk <= not clk;
+		wait for 25 ns;
+	end process;
+ 
+
+   -- Stimulus process
+   rst_proc: process
+	begin
+		wait for 800 ns;
+		rst <= '0';
+		wait;
+	end process;
+
+END;
